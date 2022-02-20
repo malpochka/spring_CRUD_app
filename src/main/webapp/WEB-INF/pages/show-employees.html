@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+        <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org" lang="">
+        <head>
+        <meta charset="UTF-8">
+        <title>Employees</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>SURNAME</th>
+        <th>DEPARTMENT</th>
+        <th>SALARY</th>
+        <th>Operations</th>
+    </tr>
+    <tr th:each="emp : ${employees}">
+
+
+        <td th:text="${emp.name}">Name</td>
+        <td th:text="${emp.surname}">Surname</td>
+        <td th:text="${emp.department}">Department</td>
+        <td th:text="${emp.salary}">Salary</td>
+        <td>
+            <button type="submit">
+                 <a th:href="@{updateInfo(empId=${emp.id})}" class="Update">Update</a> </a>
+            </button>
+            <button type="submit">
+                <a th:href="@{deleteEmployee(empId=${emp.id})}" class="Delete">Delete</a> </a>
+            </button>
+        </td>
+    </tr>
+</table>
+<br>
+<input type="button" th:value="add"
+onclick="window.location.href='addNewEmployee'"/>
+
+<!--<p>
+    <a href="view.html" th:href="@{http://localhost:8080/spring_mvc_war_exploded/cars/}">Return to home</a>
+</p>-->
+</body>
+</html>
